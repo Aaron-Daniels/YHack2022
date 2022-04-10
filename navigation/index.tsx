@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,9 +16,12 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import TabThreeScreen from '../screens/TabThreeScreen';
+import TabFourScreen from '../screens/TabFourScreen';
 import CompanyScreen from '../screens/CompanyScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { LAYOUTS } from '../constants/Layouts';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -67,9 +70,9 @@ function BottomTabNavigator() {
         name="TabOne"
         component={HomeNavigator}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+          title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="home" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -90,9 +93,27 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
+          title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabThree"
+        component={TabThreeScreen}
+        options={{
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabFour"
+        component={TabFourScreen}
+        options={{
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
         }}
       />
     </BottomTab.Navigator>
@@ -115,8 +136,8 @@ function HomeNavigator() {
         name="CompanyScreen"
         component={CompanyScreen}
         options={{
-        title: 'Company Screen',
-        headerShown: false,
+        title: 'Company Profile',
+        headerShown: true,
         }}
       />
     </HomeStack.Navigator>
