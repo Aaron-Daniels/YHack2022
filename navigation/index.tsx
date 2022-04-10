@@ -63,8 +63,10 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
+
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveBackgroundColor: 'ABABAB' 
       }}>
       <BottomTab.Screen
         name="TabOne"
@@ -72,7 +74,7 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Entypo name="home" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+          tabBarIcon: ({ color }) => <Entypo name="home" size={32} style={{marginTop: LAYOUTS.getWidth(5), color}}/>,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -95,7 +97,7 @@ function BottomTabNavigator() {
         options={{
           title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+          tabBarIcon: ({ color }) => <FontAwesome name="search" size={32} style={{marginTop: LAYOUTS.getWidth(5), color}}/>,
         }}
       />
       <BottomTab.Screen
@@ -104,7 +106,7 @@ function BottomTabNavigator() {
         options={{
           title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5), color}}/>,
         }}
       />
       <BottomTab.Screen
@@ -113,7 +115,7 @@ function BottomTabNavigator() {
         options={{
           title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Entypo name="area-graph" size={32} style={{marginTop: LAYOUTS.getWidth(5)}}/>,
+          tabBarIcon: ({ color }) => <FontAwesome name="user" size={32} style={{marginTop: LAYOUTS.getWidth(5), color}}/>,
         }}
       />
     </BottomTab.Navigator>

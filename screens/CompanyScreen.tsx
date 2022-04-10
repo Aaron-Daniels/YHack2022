@@ -79,28 +79,30 @@ export default function CompanyScreen(props) {
   // }, [productName])
 
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scroll}>
+        <View style={styles.scrollv}>
         <View style={styles.headerView}>
-        <Image
-          style = {styles.backgroundImage}
-          source = {require('../assets/images/snackbanner.jpeg')}
-        />
-        <Image
-          style = {styles.companyLogo}
-          source = {require('../assets/images/snackpassLogo.png')}
-        />
-        <Text style={styles.titleText}>Snackpass</Text>
-        <Text style={styles.companyDescriptionText}>Cut the line and get rewards.</Text>
+          <Image
+            style = {styles.backgroundImage}
+            source = {require('../assets/images/snackbanner.jpeg')}
+          />
+          <Image
+            style = {styles.companyLogo}
+            source = {require('../assets/images/snackpassLogo.png')}
+          />
+          <Text style={styles.titleText}>Snackpass</Text>
+          <Text style={styles.companyDescriptionText}>Cut the line and get rewards.</Text>
         </View>
         <View style={styles.financialsView}>
-          <Text style={styles.headerText}>Financials</Text>
+          
           <View style={styles.container}>
+          <Text style={styles.headerText}>Financials</Text>
             <Text style={styles.detailsText}>Monthly Funding: $380/$1,500</Text>
             <View style={styles.progressBar}>
               <Animated.View style={styles.fillBar}/>
             </View>
-            <Text style={styles.detailsText}>Max Return: 8x * Royalty: 1.6% * Employees: 9</Text>
+            <Text style={styles.detailsText}>Max Return: 8x • Royalty: 1.6% • Employees: 9</Text>
             <TouchableOpacity
               style={styles.investButton}
             >
@@ -110,7 +112,7 @@ export default function CompanyScreen(props) {
         </View>
         <View style={styles.linksView}>
           <Text style={styles.headerText}>Links</Text>
-          <Text style={styles.linkText}> Snackpass.co/https://www.linkedin.com/in/kevinhuangtan/</Text>
+          <Text style={styles.linkText}>snackpass.co</Text>
           <View style={styles.profilePictureContainer}>
             <Image
               style = {styles.founderProfileImage}
@@ -143,17 +145,30 @@ export default function CompanyScreen(props) {
 
 
         </View>
-      </SafeAreaView>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  scroll: {
+    flex: 1,
+
+  },
+  scrollv: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
   container: {
     //Actually can't figure out why this is necessary.
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
+    backgroundColor: 'white',
+    marginTop: LAYOUTS.getWidth(-46),
+    marginBottom: LAYOUTS.getWidth(-46),
     //light peach: '#ffd5cc'
   },
   headerView: {
@@ -175,11 +190,12 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 25,
     fontWeight: 'bold',
-    marginLeft: LAYOUTS.getWidth(130)
+    marginLeft: LAYOUTS.getWidth(125),
+  
   },
   companyDescriptionText: {
     fontWeight: 'bold',
-    marginLeft: LAYOUTS.getWidth(120)
+    marginLeft: LAYOUTS.getWidth(125)
   },
   financialsView: {
     width: LAYOUTS.getWidth(355),
@@ -187,14 +203,17 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 3,
     borderColor: '#EEEEEE',
-    marginBottom: LAYOUTS.getHeight(10)
+    marginBottom: LAYOUTS.getHeight(10),
+    paddingTop: LAYOUTS.getWidth(46),
+    marginTop: LAYOUTS.getWidth(10)
   },
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: LAYOUTS.getHeight(15),
-    marginLeft: LAYOUTS.getWidth(15),
-    marginBottom: LAYOUTS.getHeight(10)
+    marginLeft: LAYOUTS.getWidth(20),
+    marginBottom: LAYOUTS.getHeight(10),
+    alignSelf: 'flex-start'
   },
   progressBar: {
    width: LAYOUTS.getWidth(315),
@@ -213,6 +232,7 @@ const styles = StyleSheet.create({
  },
  detailsText: {
    fontWeight: '600',
+   paddingHorizontal: LAYOUTS.getWidth(20)
  },
  investButton: {
    alignItems: 'center',
@@ -230,7 +250,7 @@ const styles = StyleSheet.create({
  },
  linksView: {
    width: LAYOUTS.getWidth(355),
-   height: LAYOUTS.getHeight(160),
+   height: LAYOUTS.getHeight(143),
    borderRadius: 15,
    borderWidth: 3,
    borderColor: '#EEEEEE',
@@ -239,7 +259,7 @@ const styles = StyleSheet.create({
  linkText: {
    fontSize: 15,
    fontWeight: '600',
-   marginLeft: LAYOUTS.getWidth(15),
+   marginLeft: LAYOUTS.getWidth(20),
    marginBottom: LAYOUTS.getHeight(10),
    color: "#2ABD22",
  },
@@ -273,7 +293,8 @@ const styles = StyleSheet.create({
    borderRadius: 15,
    borderWidth: 3,
    borderColor: '#EEEEEE',
-   marginBottom: LAYOUTS.getHeight(10)
+   marginBottom: LAYOUTS.getHeight(10),
+   paddingBottom: LAYOUTS.getWidth(10)
  },
  benchmarksView: {
    width: LAYOUTS.getWidth(355),
