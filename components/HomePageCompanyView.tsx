@@ -33,7 +33,7 @@ const HomePageCompanyView = ({navigation}) => {
         >
           <Image
             style = {styles.backgroundImage}
-            source = {require('../assets/images/defaultCompanyBackground.jpeg')}
+            source = {require('../assets/images/snackbanner.jpeg')}
           />
         </View>
         <Image
@@ -44,7 +44,7 @@ const HomePageCompanyView = ({navigation}) => {
           style = {styles.titleView}
         >
           <Text style={styles.titleText}>Snackpass</Text>
-          <Text>Cut the line and get rewards!</Text>
+          <Text style={styles.taglineText}>Cut the line and get rewards!</Text>
         </View>
         <View
           style={styles.companyDescriptionView}
@@ -66,53 +66,61 @@ const styles = StyleSheet.create({
     height: LAYOUTS.getHeight(250),
     borderRadius: 15,
     borderWidth: 3,
-    borderColor: '#EEEEEE'
+    borderColor: '#EEEEEE',
+    marginBottom: LAYOUTS.getWidth(10)
 
   },
   imageStyle: {
     aspectRatio: 1,
     resizeMode: 'contain',
-    borderRadius: 10,
   },
   backgroundView: {
     width: LAYOUTS.getWidth(355),
     height: LAYOUTS.getHeight(155),
-
   },
   backgroundImage: {
     resizeMode: 'cover',
-    width: LAYOUTS.getWidth(349),
+    width: LAYOUTS.getWidth(355),
     height: LAYOUTS.getHeight(155),
-    borderRadius: 15
+    borderRadius: 15,
+
   },
   companyLogo: {
-    left: LAYOUTS.getWidth(20),
-    top: LAYOUTS.getWidth(120),
+    left: LAYOUTS.getWidth(15),
+    bottom: LAYOUTS.getWidth(35),
     position: 'absolute',
-    width: LAYOUTS.getWidth(100),
-    height: LAYOUTS.getHeight(100)
+    width: LAYOUTS.getWidth(80),
+    height: LAYOUTS.getHeight(80)
   },
   titleView: {
     width: LAYOUTS.getWidth(355),
     height: LAYOUTS.getHeight(50),
-    paddingLeft: LAYOUTS.getWidth(130)
+    paddingLeft: LAYOUTS.getWidth(102),
   },
   titleText: {
     fontSize: 25,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Avenir',
   },
-  // companyDescriptionView: {
-  //   paddingTop: LAYOUTS.getHeight(5),
-  //   paddingLeft: LAYOUTS.getWidth(110)
-  // },
+  taglineText: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    fontFamily: 'Avenir',
+  },
+  companyDescriptionView: {
+    borderWidth: 0,
+    alignItems: 'center',
+    paddingTop: LAYOUTS.getWidth(5)
+  },
   fundingText: {
     fontWeight: 'bold',
-    marginTop: LAYOUTS.getHeight(5),
-    marginLeft: LAYOUTS.getWidth(110)
+    fontFamily: 'Avenir',
+    fontSize: 12,
   },
   detailsText: {
     fontWeight: 'bold',
-    marginLeft: LAYOUTS.getWidth(20)
+    fontFamily: 'Avenir',
+    fontSize: 12,
   },
 
 });

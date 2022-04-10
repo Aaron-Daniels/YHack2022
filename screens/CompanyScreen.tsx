@@ -42,7 +42,7 @@ export default function CompanyScreen(props) {
         <View style={styles.headerView}>
         <Image
           style = {styles.backgroundImage}
-          source = {require('../assets/images/defaultCompanyBackground.jpeg')}
+          source = {require('../assets/images/snackbanner.jpeg')}
         />
         <Image
           style = {styles.companyLogo}
