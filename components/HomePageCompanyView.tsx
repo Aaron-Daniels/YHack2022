@@ -113,7 +113,8 @@ const styles = StyleSheet.create({
   detailsText: {
     fontWeight: 'bold',
     marginLeft: LAYOUTS.getWidth(20)
-  }
+  },
+
 });
 
 export default HomePageCompanyView;
