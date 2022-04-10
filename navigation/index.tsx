@@ -16,6 +16,7 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import CompanyScreen from '../screens/CompanyScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -64,7 +65,7 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={HomeNavigator}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: 'Tab One',
           headerShown: false,
@@ -97,7 +98,30 @@ function BottomTabNavigator() {
     </BottomTab.Navigator>
   );
 }
+const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
+function HomeNavigator() {
+  const colorScheme = useColorScheme();
+  return (
+    <HomeStack.Navigator
+      initialRouteName="HomeScreen"
+    >
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={TabOneScreen}
+        options={{ headerTitle: 'Home Screen'}, {headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="CompanyScreen"
+        component={CompanyScreen}
+        options={{
+        title: 'Company Screen',
+        headerShown: false,
+        }}
+      />
+    </HomeStack.Navigator>
+  );
+}
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */

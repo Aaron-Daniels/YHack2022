@@ -7,13 +7,14 @@ import { LAYOUTS } from '../constants/Layouts';
 // import {getStorageURL} from '../API/firebaseMethods';
 import { COLORS } from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import CompanyScreen from '../screens/CompanyScreen';
 // import * as firebase from 'firebase';
 
 //See Sillable ItemView for inspiration
-const HomeItemView = () => {
+const HomePageCompanyView = ({navigation}) => {
   //You have to use the 'useNavigation' hook in order to have components inherit navigation.
   //Only screens inherit this behavior by default
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
   //const data = getProductData(productid);
 
   const colorScheme = useColorScheme();
@@ -22,6 +23,7 @@ const HomeItemView = () => {
   return (
       <TouchableOpacity
         style={styles.windowStyle}
+        onPress={() => navigation.navigate('CompanyScreen')}
         //Navigate to the product screen, the props are passed in
         //as a js object
         //Note that we pass the data that we pulled
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
   },
   companyLogo: {
     left: LAYOUTS.getWidth(20),
-    top: LAYOUTS.getWidth(130),
+    top: LAYOUTS.getWidth(120),
     position: 'absolute',
     width: LAYOUTS.getWidth(100),
     height: LAYOUTS.getHeight(100)
@@ -114,4 +116,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeItemView;
+export default HomePageCompanyView;

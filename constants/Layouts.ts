@@ -11,7 +11,7 @@ export const LAYOUTS = {
     height,
   },
   getWidth: (figma:any) => {
-    return (figma * width / 395)
+    return (figma * width / 375)
   },
   getHeight: (figma: any) => {
     return (figma * height / 830)

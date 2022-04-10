@@ -5,12 +5,12 @@ import HomePageCompanyView from '../components/HomePageCompanyView'
 import { Text, View} from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen({ navigation }) {
   return (
   <ScrollView>
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Recommended For You</Text>
-      <HomePageCompanyView/>
+      <HomePageCompanyView navigation={navigation}/>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     </SafeAreaView>
   </ScrollView>
