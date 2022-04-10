@@ -15,6 +15,24 @@ export default function CompanyScreen(props) {
 
   // const [data, setData] = useState();
 
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    //If we do not have the props.data for this product, passed in from the previous component, we need to fetch it from firebase.
+
+      const db = firebase.firestore();
+      var docRef = db.collection('Companies').doc('exsbhykxcROlnfxujfaN');
+
+      docRef.get().then((doc) => {
+        console.log("Got some data,", doc.data())
+      })
+
+
+
+    //if(props.mainImageLink && props.mainImageLink == undefined || params.mainImageLink == null)
+
+  }, [])
+
 
   //All links intended for use by images should be initialized to undefined to prevent warnings/errors.
 
