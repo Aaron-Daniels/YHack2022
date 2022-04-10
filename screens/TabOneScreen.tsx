@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
+    fontFamily: 'Avenir'
   },
   separator: {
     marginVertical: 30,
