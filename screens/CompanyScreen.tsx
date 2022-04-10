@@ -6,6 +6,7 @@ import Images from '../assets/images/index';
 import useColorScheme from '../hooks/useColorScheme';
 import { LAYOUTS } from '../constants/Layouts';
 import Benchmark from '../components/Benchmark';
+import {getStorageURL} from '../API/firebaseMethods';
 
 import * as firebase from 'firebase';
 
@@ -16,22 +17,45 @@ export default function CompanyScreen(props) {
   // const [data, setData] = useState();
 
   const [data, setData] = useState();
+  const [logoLink, setLogoLink] = useState();
+  const [bannerLink, setBannerLink] = useState();
 
   useEffect(() => {
     //If we do not have the props.data for this product, passed in from the previous component, we need to fetch it from firebase.
 
       const db = firebase.firestore();
-      var docRef = db.collection('Companies').doc('exsbhykxcROlnfxujfaN');
+      var docRef = db.collection('companies').doc('exsbhykxcROlnfxujfaN');
 
       docRef.get().then((doc) => {
         console.log("Got some data,", doc.data())
+        setData(doc.data());
       })
-
-
-
     //if(props.mainImageLink && props.mainImageLink == undefined || params.mainImageLink == null)
 
   }, [])
+
+
+
+  // useEffect(() => {
+  //   //console.log("It is loaded")
+  //   getStorageURL(data?.logoPath).then((url) => {
+  //     if(url != null) {
+  //       //console.log("The image path is:", data?.imagePath);
+  //       setLogoLink(url)
+  //     }
+  //   }).catch(error => {
+  //     //Most commonly there will be an error (promise rejection before the data loads in from the api fetch and
+  //     //has the opportunity to be set as the piece of state called data.)
+  //     console.log("Caught an error in HomeItemView render l", error)
+  //   })
+  //
+  // }, [data])
+  //
+  // useEffect(() => {
+  //   console.log("this is the logoLink: ", logoLink)
+  // }, [logoLink])
+
+
 
 
   //All links intended for use by images should be initialized to undefined to prevent warnings/errors.
