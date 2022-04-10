@@ -4,20 +4,71 @@ import Images from '../assets/images/index';
 import {useNavigation} from '@react-navigation/native';
 import { LAYOUTS } from '../constants/Layouts';
 // import {getProductData} from '../constants/DataHelpers';
-// import {getStorageURL} from '../API/firebaseMethods';
+import {getStorageURL} from '../API/firebaseMethods';
 import { COLORS } from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import CompanyScreen from '../screens/CompanyScreen';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 //See Sillable ItemView for inspiration
-const HomePageCompanyView = ({navigation}) => {
+const HomePageCompanyView = ({navigation, companyid}) => {
   //You have to use the 'useNavigation' hook in order to have components inherit navigation.
   //Only screens inherit this behavior by default
   //const navigation = useNavigation();
   //const data = getProductData(productid);
 
   const colorScheme = useColorScheme();
+
+  const [data, setData] = useState();
+  const [logoLink, setLogoLink] = useState();
+  const [bannerLink, setBannerLink] = useState();
+
+  useEffect(() => {
+  const db = firebase.firestore();
+  var docRef = db.collection('companies').doc(companyid);
+
+  docRef.get().then((doc) => {
+    if(doc.exists){
+      return(doc.data())
+    } else {
+      console.log("No such Document!");
+    }
+  }).then((result) => {
+    setData(result);
+
+    return(true);
+  }).then((result) => {
+    if(data) {
+      //console.log("The data received was", data)
+    }
+    return(true)
+  }).catch((error) => {
+    console.log("error getting document", error);
+  })
+}, [])
+
+  useEffect(() => {
+    console.log("Got the new data with tile: ", data?.title);
+  }, [data])
+
+  // useEffect(() => {
+  //   //console.log("It is loaded")
+  //   getStorageURL(data?.logoPath).then((url) => {
+  //     if(url != null) {
+  //       //console.log("The image path is:", data?.imagePath);
+  //       setLogoLink(url)
+  //       return(imageLink)
+  //     }
+  //   }).then((result) => {
+  //     //console.log("Set the image Link", imageLink);
+  //     //setLoaded(true)
+  //   }).catch(error => {
+  //     //Most commonly there will be an error (promise rejection before the data loads in from the api fetch and
+  //     //has the opportunity to be set as the piece of state called data.)
+  //     console.log("Caught an error in HomeItemView render l", error)
+  //   })
+  //
+  // }, [data])
 
   //const item2Data = getProductData(props.item2id);
   return (
@@ -43,14 +94,14 @@ const HomePageCompanyView = ({navigation}) => {
         <View
           style = {styles.titleView}
         >
-          <Text style={styles.titleText}>Snackpass</Text>
-          <Text style={styles.taglineText}>Cut the line and get rewards!</Text>
+          <Text style={styles.titleText}>{data?.title}</Text>
+          <Text style={styles.taglineText}>{data?.description}</Text>
         </View>
         <View
           style={styles.companyDescriptionView}
         >
-          <Text style={styles.fundingText}>Monthly Funding: $380/$1,500</Text>
-          <Text style={styles.detailsText}>Max Return: 10x * Royalty: 3% * Employees: 2  </Text>
+          <Text style={styles.fundingText}>Monthly Funding: ${data?.currentFunding}/${data?.fundingGoal}</Text>
+          <Text style={styles.detailsText}>Max Return: {data?.maxReturn}x * Royalty: {data?.royalty} * Employees: {data?.employees}  </Text>
 
         </View>
 

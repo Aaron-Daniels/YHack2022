@@ -12,9 +12,9 @@ export default function TabOneScreen({ navigation }) {
       <ScrollView>
         <View style={styles.scrollContainer}>
           <Text style={styles.title}>Recommended for you</Text>
-          <HomePageCompanyView navigation={navigation}/>
-          <HomePageCompanyView navigation={navigation}/>
-          <HomePageCompanyView navigation={navigation}/>
+          <HomePageCompanyView navigation={navigation} companyid={'exsbhykxcROlnfxujfaN'}/>
+          <HomePageCompanyView navigation={navigation} companyid={'exsbhykxcROlnfxujfaN'}/>
+          <HomePageCompanyView navigation={navigation} companyid={'exsbhykxcROlnfxujfaN'}/>
         </View>
       </ScrollView>
     </SafeAreaView>
